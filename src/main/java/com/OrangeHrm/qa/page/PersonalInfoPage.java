@@ -21,6 +21,7 @@ public class PersonalInfoPage extends HrmBasePage {
 
 		System.out.println(firstname);
 		System.out.println(lastname);
+		
 	}
 
 }

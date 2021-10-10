@@ -14,7 +14,11 @@ public class LoginPage extends HrmBasePage {
 	private By HrmPageLogo = By.cssSelector("#divLogo img");
 	private By SuccessLoginMesg = By.cssSelector("a#welcome");
 	private By MyInfoLink = By.linkText("My Info");
-
+    private By Logoutcheck=By.cssSelector("a#welcome");
+    private By LogoutClick=By.xpath("//*[@id=\"welcome-menu\"]/ul/li[3]/a");
+    private By FailedLoginMesg=By.xpath(("//*[@id=\"spanMessage\"]"));
+    
+    
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -43,6 +47,14 @@ public class LoginPage extends HrmBasePage {
 		return false;
 	}
 
+	public void logoutCheck(String usr,String pwd)
+	{
+		driver.findElement(Logoutcheck).click();
+		driver.findElement(LogoutClick).click();
+		String FailedMesg=driver.findElement(FailedLoginMesg).getText();
+		System.out.println(FailedMesg);
+	}
+	
 	public PersonalInfoPage myInfoLink() {
 		driver.findElement(MyInfoLink).click();
 
