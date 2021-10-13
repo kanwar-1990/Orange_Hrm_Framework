@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeTest;
 
 import com.OrangeHrm.qa.page.LoginPage;
 import com.OrangeHrm.qa.page.PersonalInfoPage;
+import com.OrangeHrm.qa.page.PimPage;
 
 public class HrmBaseTest {
 	public HrmBasePage hrmbasepage;
@@ -15,6 +16,7 @@ public class HrmBaseTest {
 	public WebDriver driver;
 	public LoginPage loginpage;
 	public PersonalInfoPage personalinfopage;
+	public PimPage pimpage;
 
 	@BeforeTest
 	public void setup() {

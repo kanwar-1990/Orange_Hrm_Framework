@@ -2,6 +2,8 @@ package com.OrangeHrm.qa.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import com.OrangeHrm.qa.Base.HrmBasePage;
 
@@ -14,11 +16,12 @@ public class LoginPage extends HrmBasePage {
 	private By HrmPageLogo = By.cssSelector("#divLogo img");
 	private By SuccessLoginMesg = By.cssSelector("a#welcome");
 	private By MyInfoLink = By.linkText("My Info");
-    private By Logoutcheck=By.cssSelector("a#welcome");
-    private By LogoutClick=By.xpath("//*[@id=\"welcome-menu\"]/ul/li[3]/a");
-    private By FailedLoginMesg=By.xpath(("//*[@id=\"spanMessage\"]"));
-    
-    
+	private By Logoutcheck = By.cssSelector("a#welcome");
+	private By LogoutClick = By.xpath("//*[@id=\"welcome-menu\"]/ul/li[3]/a");
+	private By FailedLoginMesg = By.xpath(("//*[@id=\"spanMessage\"]"));
+	private By PIM = By.xpath("//*[@id=\"menu_pim_viewPimModule\"]/b");
+	private By AddEmployee = By.linkText("Add Employee");
+
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -47,19 +50,27 @@ public class LoginPage extends HrmBasePage {
 		return false;
 	}
 
-	public void logoutCheck(String usr,String pwd)
-	{
+	public void logoutCheck(String usr, String pwd) {
 		driver.findElement(Logoutcheck).click();
 		driver.findElement(LogoutClick).click();
-		String FailedMesg=driver.findElement(FailedLoginMesg).getText();
+		String FailedMesg = driver.findElement(FailedLoginMesg).getText();
 		System.out.println(FailedMesg);
 	}
-	
+
 	public PersonalInfoPage myInfoLink() {
 		driver.findElement(MyInfoLink).click();
 
 		return new PersonalInfoPage(driver);
 
+	}
+
+	public PimPage PimLinkLogin() {
+		WebElement PIMlink = driver.findElement(PIM);
+		Actions action = new Actions(driver);
+		action.moveToElement(PIMlink).build().perform();
+		driver.findElement(AddEmployee).click();
+
+		return new PimPage(driver);
 	}
 
 }
