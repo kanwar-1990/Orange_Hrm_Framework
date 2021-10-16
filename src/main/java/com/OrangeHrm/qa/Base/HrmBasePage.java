@@ -19,7 +19,7 @@ public class HrmBasePage{
 
 	public WebDriver init_driver(String BrowserName) {
 
-		System.out.println("The Browser Value is " + BrowserName);
+		System.out.println("The Browser Value is :" + BrowserName);
 		op = new OptionalManagers(prop);
 		if (BrowserName.equalsIgnoreCase(("chrome"))) {
 			WebDriverManager.chromedriver().setup();

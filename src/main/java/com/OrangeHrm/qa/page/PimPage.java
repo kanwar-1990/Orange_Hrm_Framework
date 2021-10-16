@@ -23,7 +23,9 @@ public class PimPage extends HrmBasePage {
 	private By SearchById = By.name("empsearch[id]");
 	private By Searchbttn = By.cssSelector("input#searchBtn");
 	private By SearchResult = By.cssSelector("#resultTable td a");
-
+    private By 	SelectTheName=By.name("chkSelectRow[]");
+    private By DeleteBttn=By.cssSelector(".delete");
+    private By ClickOkBox=By.xpath("//input[@value='Ok' and @class='btn']");
 	public PimPage(WebDriver driver) {
 
 		this.driver = driver;
@@ -56,4 +58,12 @@ public class PimPage extends HrmBasePage {
 			System.out.println(detailsList);
 		}
 	}
+	
+	public void deleteTheEmployeeDetails()
+	{
+		driver.findElement(SelectTheName).click();
+		driver.findElement(DeleteBttn).click();
+	    driver.findElement(ClickOkBox).click();
+	}
+	
 }

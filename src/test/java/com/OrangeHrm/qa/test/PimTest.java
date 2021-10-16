@@ -15,12 +15,18 @@ public class PimTest extends HrmBaseTest {
 
 	@Test(priority = 1,enabled=false)
 	public void checkPimAddEmployeeTest() {
-		pimpage.AddAnEmployee("Delta", "Sim", "Hilarious12345", "765303");
+		pimpage.AddAnEmployee("Delta", "Sim", "Hilarious12345", "8765303");
 	}
 
 	@Test(priority = 2)
 	public void searchListResultTest() {
-		pimpage.SeachAnEmployee("Delta Sim Hilarious12345", "0270765303");
+		pimpage.SeachAnEmployee("Delta Sim Hilarious12345", "0268765303");
+	}
+	@Test(priority=3)
+	public void DeleteAddedEmployee()
+	{
+		pimpage.deleteTheEmployeeDetails();
+		
 	}
 
 }
